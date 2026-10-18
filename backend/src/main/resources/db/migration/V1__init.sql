@@ -27,7 +27,7 @@ CREATE TABLE reservation (
 	checked_in_at  timestamptz,
 	checked_out_at timestamptz,
 	start_at       timestamptz NOT NULL,
-        end_at         timestamptz NOT NULL,
-        CHECK (end_at > start_at)
+    end_at         timestamptz NOT NULL,
+    CHECK (end_at > start_at)
 
 );
