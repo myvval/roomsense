@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS status, reservation, room, app_user CASCADE;
-
 CREATE table status (
 	code text PRIMARY KEY
 );
