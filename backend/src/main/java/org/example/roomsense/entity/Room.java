@@ -15,7 +15,7 @@ public class Room {
     private String name;
     @Column(name = "is_active", nullable = false)
     @JsonProperty("active")
-    private Boolean isActive;
+    private Boolean isActive = true;
 
     public Room() {}
 

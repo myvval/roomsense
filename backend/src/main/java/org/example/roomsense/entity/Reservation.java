@@ -10,11 +10,11 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne
-    @JoinColumn(name="user_id")
+    @ManyToOne(optional=false)
+    @JoinColumn(name="user_id", nullable = false)
     private AppUser appUser;
-    @ManyToOne
-    @JoinColumn(name="room_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name="room_id", nullable= false)
     private Room room;
     @Column(name="status_code", nullable = false)
     private String statusCode = "PENDING"; //Change later to Status object.
