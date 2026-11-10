@@ -1,18 +1,25 @@
 package org.example.roomsense.controller;
 
-import org.example.roomsense.entity.Reservation;
-import org.example.roomsense.repository.ReservationRepository;
+import jakarta.validation.Valid;
+import org.example.roomsense.dto.CreateReservationRequest;
+import org.example.roomsense.dto.ReservationResponse;
+import org.example.roomsense.service.ReservationService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
 @RequestMapping("/api/reservations")
 public class ReservationController {
-    private final ReservationRepository reservationRepository;
-    public ReservationController(ReservationRepository reservationRepository) {this.reservationRepository = reservationRepository;}
+    private final ReservationService reservationService;
+    public ReservationController(ReservationService reservationService) {this.reservationService = reservationService;}
 
     @GetMapping
-    public List<Reservation> findAllReservations() {return reservationRepository.findAll(); }
+    public List<ReservationResponse> findAllReservations() {return reservationService.findAll(); }
+
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Reservation createReservation(@RequestBody Reservation reservation) {return reservationRepository.save(reservation);}
+    public ReservationResponse createReservation(@Valid @RequestBody CreateReservationRequest createReservationRequest) {
+        return reservationService.create(createReservationRequest);
+    }
 }
