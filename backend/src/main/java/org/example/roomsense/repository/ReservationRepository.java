@@ -22,5 +22,12 @@ public interface ReservationRepository extends JpaRepository<Reservation,Integer
             @Param("dayEnd") OffsetDateTime dayEnd
     );
 
+    @Query("SELECT r FROM Reservation  r WHERE r.room.id = :roomId " +
+            "AND r.statusCode IN ('PENDING', 'CONFIRMED', 'ACTIVE', 'OVERSTAY') " +
+            "AND r.startAt < :endWindow AND r.endAt > :startWindow")
+    List<Reservation> findCurrentAndUpcomingReservations(
+            @Param("roomId") Integer roomId,
+            @Param("startWindow") OffsetDateTime startWindow,
+            @Param("endWindow") OffsetDateTime endWindow
+    );
 }
-
