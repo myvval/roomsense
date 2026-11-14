@@ -2,7 +2,6 @@ package org.example.roomsense.service;
 
 
 import org.example.roomsense.dto.Slot;
-import org.springframework.cglib.core.Local;
 import org.springframework.transaction.annotation.Transactional;
 import org.example.roomsense.dto.CreateReservationRequest;
 import org.example.roomsense.dto.ReservationResponse;
@@ -42,10 +41,10 @@ public class ReservationService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "End must be after start");
         }
         AppUser user = appUserRepository.findById(createReservationRequest.userId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User was not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
         Room room = roomRepository.findById(createReservationRequest.roomId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Room was not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Room not found"));
 
         Reservation reservation = new Reservation(room, user, createReservationRequest.startAt(), createReservationRequest.endAt());
         reservation.setStatusCode("CONFIRMED");

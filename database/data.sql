@@ -22,3 +22,4 @@ INSERT INTO reservation (user_id, room_id, status_code, start_at, end_at, checke
     (3, 1, 'PENDING', '2026-10-20 12:00:00', '2026-10-20 13:00:00', NULL, NULL),
     (2, 3, 'CONFIRMED', '2026-10-20 14:00:00', '2026-10-20 15:00:00', NULL, NULL)
 ;
+
