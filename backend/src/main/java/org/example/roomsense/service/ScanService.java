@@ -38,7 +38,7 @@ public class ScanService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Room not found"));
 
         AppUser appUser = appUserRepository.findByCardUid(cleanString(request.cardUid()))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User with that card not found."));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User with that card not found"));
 
         OffsetDateTime now = OffsetDateTime.now();
 
